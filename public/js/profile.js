@@ -1,6 +1,6 @@
 const newFormHandler = async (event) => {
   event.preventDefault();
-
+  console.log("profile.js is hooked")
   const text = document.querySelector('#post-text').value.trim();
   const title = document.querySelector('#post-title').value.trim();
   // const needed_funding = document
