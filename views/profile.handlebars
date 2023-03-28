@@ -5,41 +5,62 @@
 </div>
 
 <div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Create a New Project:</h3>
-
-    <form class="form new-project-form">
+  <div class="box col-md-6">
+    <h3>What's on your techy mind today?</h3>
+    <br>
+    <form class="form new-post-form">
       <div class="form-group">
-        <label for="project-name">project name:</label>
-        <input class="form-input" type="text" id="project-name" name="project-name" />
+        <div class="field is-horizontal">
+          <div class="field-label is-normal">
+            <label  class="label">Title</label>
+          </div>
+          <div class="field-body">
+            <div class="field">
+              <p class="control">
+                <input class="input" placeholder="Post title" id="post-title">
+              </p>
+            </div>
+          </div>
+        </div>
+        <label for="post-text"></label>
+        <textarea class="textarea" placeholder="Enter post text here" id="post-text"></textarea>
       </div>
       <div class="form-group">
-        <label for="project-funding">needed funding ($):</label>
-        <input class="form-input" type="number" id="project-funding" name="project-funding" />
-      </div>
-      <div class="form-group">
-        <label for="project-desc">description:</label>
-        <textarea class="form-input" id="project-desc" name="project-desc"></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">Post</button>
       </div>
     </form>
   </div>
 
-  {{#if projects.length}}
+  {{#if posts.length}}
   <div class="col-md-6 project-list">
-    <h3>Current Projects:</h3>
+    <h3>Your Posts:</h3>
+    {{#each posts as |posts|}}
 
-    {{#each projects as |project|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/project/{{project.id}}">{{project.name}}</a></h4>
+    <article class="message is-small">
+      
+      <div class="message-header">
+        <p class="media-left">{{posts.title}}</p>
+         <p class="float-right"><strong>{{../name}}</strong> <small>@{{../username}}</small></p> 
+    
+        
+     </div>
+
+      <div class="message-body">
+
+        <div class="content">
+          <p>
+            
+            {{posts.text}}
+            <br>
+            
+         
+         
+          <p><small>Posted on: {{posts.date_created}}</small> <small><a href="/post/{{posts.id}}">See Post</a></small></p>
+           </p>
+           <button class="button is-dark" data-id="{{posts.id}}" aria-label="delete">Delete</button>
+        </div>
       </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{project.id}}">DELETE</button>
-      </div>
-    </div>
+    </article>
     {{/each}}
   </div>
   {{/if}}
