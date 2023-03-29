@@ -33,21 +33,22 @@ router.get('/post/:id', async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['name', 'username'],
+          // attributes: ['name'],
         },
         {
           model: Comment,
-          attributes: ['text'],
+          // attributes: ['text'],
         },
       ],
     });
 
     const post = postData.get({ plain: true });
-    
+
     res.render('post', {
       ...post,
       logged_in: req.session.logged_in,
     });
+    console.log('post and comment data HERE!!!!!!', JSON.stringify(post));
   } catch (err) {
     res.status(500).json(err);
     console.log(err);

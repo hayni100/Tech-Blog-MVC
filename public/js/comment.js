@@ -4,22 +4,22 @@ const handleCommentSubmit = async (event) => {
   event.preventDefault();
   console.log('comment submit button is clicked');
 
-  const comment = document.querySelector('#comment-text').value.trim();
-    console.log("comment input", comment)
-  if (comment) {
-    const response = await fetch(`/api/comment`, {
+  const text = document.querySelector('#comment-text').value.trim();
+  console.log('comment input', text);
+  if (text) {
+    const response = await fetch(`/api/posts/:postId/comment`, {
       method: 'POST',
-      body: JSON.stringify({ comment }),
+      body: JSON.stringify({text}),
       headers: {
         'Content-Type': 'application/json',
       },
     });
     if (response.ok) {
-        document.location.replace('/post/:id');
-      } else {
-        alert('Failed to create comment');
-      }
+      document.location.reload();
+    } else {
+      alert('Failed to create comment');
     }
+  }
 };
 
 document

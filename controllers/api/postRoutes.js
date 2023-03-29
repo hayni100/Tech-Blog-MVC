@@ -2,6 +2,7 @@ const router = require('express').Router();
 const { Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+
 router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
@@ -15,16 +16,23 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-router.post('/comment', withAuth, async (req, res) => {
+router.post('/:postId/comment', async (req, res) => {
   try {
     const newComment = await Comment.create({
       ...req.body,
-      user_id: req.session.user_id,
+      post_id: parseInt(req.params.postId),
+      user_id: req.session.user_id
+      // ...req.body,
+      // post_id: parseInt(req.params.postId),
+      // user_id: req.session.user_id,
     });
 
+
+    
     res.status(200).json(newComment);
   } catch (err) {
     res.status(400).json(err);
+    console.log("posting comment error", err);
   }
 });
 
