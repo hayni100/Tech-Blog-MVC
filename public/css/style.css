@@ -8,7 +8,7 @@ header, .project:not(:last-child) {
   border: none;
   padding: 0;
   cursor: pointer;
-  color: #1b89bc;
+  color: #07b49a;
   text-decoration: none;
   font-size: 100%;
 }
@@ -22,4 +22,15 @@ header, .project:not(:last-child) {
   color: #056605;
   font-weight: bold;
   margin-left: -5px;
+}
+
+#login-card {
+  display: flex;
+  justify-content: center;
+
+}
+
+#post-info {
+  display: flex;
+  justify-content: end;
 }

@@ -1,55 +1,74 @@
-
-<article class="media">
-  {{!-- <figure class="media-left">
-    <p class="image is-64x64">
-      <img src="https://bulma.io/images/placeholders/128x128.png">
-    </p>
-  </figure> --}}
-  <div class="media-content">
-    <div class="content">
+{{#if logged_in}}
+<article class='media'>
+  <div class='media-content'>
+    <div class='content'>
       <p>
-       <h2>post id: {{id}}</h2> 
-        <strong>{{user.name}}</strong>
+        <h2>{{title}}</h2>
+        <div class="box">
+        {{text}}
         <br>
-       {{text}}
-        <br>
-        <small>@{{user.username}} · <a>Reply</a> · posted: {{date_created}}</small>
+        <div id="post-info">
+        <small> @{{user.username}}
+          {{!-- ·
+          <a>Reply</a> --}}
+          · Date Posted:
+          {{date_created}}</small>
+          </div>
+        </div>
+       
       </p>
-    
-           <article class="media">
-            <p>
-            <small>{{comment.date_created}}</small>
+
+      {{!-- <article class='media'>
+        <p>
+          <small>{{comment.date_created}}</small>
           {{comment.text}}
-            </p>
-        </article>
+        </p>
+      </article> --}}
 
-        <article class="media column is-11 is-offset-1">
+      <article class='media column is-11 is-offset-1'>
 
-          Morbi vitae diam et purus tincidunt porttitor vel vitae augue. Praesent malesuada metus sed pharetra euismod. Cras tellus odio, tincidunt iaculis diam non, porta aliquet tortor.
-        </article>
-      </div>  
+       [comments] Morbi vitae diam et purus tincidunt porttitor vel vitae augue. Praesent
+        malesuada metus sed pharetra euismod. Cras tellus odio, tincidunt
+        iaculis diam non, porta aliquet tortor.
+      </article>
+    </div>
   </div>
 </article>
 
-<form class="form new-comment-form" action="/posts/{{id}}/comments" method="post">
-  {{!-- <figure class="media-left">
-    <p class="image is-64x64">
-      <img src="https://bulma.io/images/placeholders/128x128.png">
-    </p>
-  </figure> --}}
-  <div class="media-content">
-    <div class="field">
-      <p class="control">
-        <textarea id="comment-text" class="textarea" placeholder="Add a comment..."></textarea>
+<form
+  class='form new-comment-form'
+  action='/posts/{{id}}/comments'
+  method='post'
+>
+  <div class='media-content'>
+    <div class='field'>
+      <p class='control'>
+        <textarea
+          id='comment-text'
+          class='textarea'
+          placeholder='Add a comment...'
+        ></textarea>
       </p>
     </div>
-    <div class="field">
-      <p class="control">
-        <button id="comment-button" type="sumbit" class="button">Post comment</button>
+    <div class='field'>
+      <p class='control'>
+        <button id='comment-button' type='sumbit' class='button'>Post comment</button>
       </p>
     </div>
   </div>
 </form>
+<script src='/js/comment.js'></script>
+
+{{else}}
+<article class="box is-warning ">
+  <div id="login-card"class="box">
+    <h2>Please "Login" or "Signup" too see posts! </h2>
+  </div>
+  <div id="login-card"> 
+      <a  class="button is-dark" href="/login">Login/Signup</a>
+  </div>
+  
+</article>
 
 
-<script src="/js/comment.js"></script>
+{{/if}}
