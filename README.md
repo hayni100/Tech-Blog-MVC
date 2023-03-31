@@ -4,7 +4,7 @@ Deployed app: https://desolate-shore-53056.herokuapp.com/
 GitHub repo: https://github.com/hayni100/Tech-Blog-MVC
 
 ## Description
-This is an application that follows the MVC framwork. This application is a simple blog that allows users to login, view other users posts, create new post, and delete their own blog posts. Moreover, users can comment on other users posts. 
+This project was built following the MVC framwork. This application is a simple blog that allows users to login, view other users posts, create new post, and delete their own blog posts. Moreover, users can comment on other users posts. 
 
 
 Please note that this application is incomplete.
